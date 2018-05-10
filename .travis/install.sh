@@ -7,7 +7,6 @@
 
 set -e -x
 
-sudo apt-get -qq update
 sudo apt-get install libgd2-xpm-dev # for npg_tracking
 cpanm --quiet --notest Alien::Tidyp # for npg_qc
 cpanm --quiet --notest LWP::Protocol::https
