@@ -111,7 +111,27 @@ __END__
 
 npg_warehouse::loader::pacbio::product
 
+=head1 SYNOPSIS
+
 =head1 DESCRIPTION
+
+=head1 DIAGNOSTICS
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+=head1 DEPENDENCIES
+
+=over
+
+=item Moose::Role
+
+=item Readonly
+
+=back
+
+=head1 INCOMPATIBILITIES
+
+=head1 BUGS AND LIMITATIONS
 
 =head1 AUTHOR
 

@@ -28,8 +28,8 @@ has 'mlwh_schema' =>
 
 =head2 fix_date
 
-  Arg [1]    : 
-  Example    : 
+  Arg [1]    : SMRT Link date string.
+  Example    : my($fixed_date) = $self->fix_date($date) 
   Description: Convert SMRT Link date to datetime
   Returntype : String
 
@@ -60,7 +60,31 @@ __END__
 
 npg_warehouse::loader::pacbio::base
 
-=head1 DESCRIPTION
+=head1 SYNOPSIS
+
+q=head1 DESCRIPTION
+
+Base class for pacbio data loading.
+
+=head1 DIAGNOSTICS
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+=head1 DEPENDENCIES
+
+=over
+
+=item Moose::Role
+
+=item WTSI::NPG::HTS::PacBio::Sequel::APIClient
+
+=item WTSI::DNAP::Warehouse::Schema
+
+=back
+
+=head1 INCOMPATIBILITIES
+
+=head1 BUGS AND LIMITATIONS
 
 =head1 AUTHOR
 

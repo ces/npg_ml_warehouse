@@ -114,6 +114,7 @@ npg_pacbio_runs2mlwarehouse [--api-uri <uri>] [--debug] [--help]
 
 
 Options:
+
   --api-uri
   --api_uri        Specify the server host and port. Optional.
   --debug          Enable debug level logging. Optional, defaults
@@ -121,11 +122,10 @@ Options:
   --help           Display help.
   --interval       Interval of time in days for analysis loading. 
                    Optional, defaults to 100,000 days.
- 
   --logconf        A log4perl configuration file. Optional.
   --older-than
   --older_than     Only consider analysis older than a specified 
-                   number of days. Optional defaults to 0 days. 
+                   number of days. Optional, defaults to 0 days. 
   --verbose        Print messages while processing. Optional.
 
 

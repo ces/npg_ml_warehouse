@@ -260,7 +260,47 @@ __END__
 
 npg_warehouse::loader::pacbio::run
 
+=head1 SYNOPSIS
+
+ npg_warehouse::loader::pacbio::run->new(@args)->load_run;
+
 =head1 DESCRIPTION
+
+=head1 DIAGNOSTICS
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+=head1 DEPENDENCIES
+
+=over
+
+=item namespace::autoclean
+
+=item English
+
+=item JSON
+
+=item Moose
+
+=item MooseX::StrictConstructor
+
+=item Perl6::Slurp
+
+=item Readonly
+
+=item Try::Tiny
+
+=item npg_warehouse::loader::pacbio::base
+
+=item npg_warehouse::loader::pacbio::product
+
+=item WTSI::DNAP::Utilities::Loggable
+
+=back
+
+=head1 INCOMPATIBILITIES
+
+=head1 BUGS AND LIMITATIONS
 
 =head1 AUTHOR
 
