@@ -1,5 +1,7 @@
 LIST OF CHANGES
 
+ - inital ml warehouse run data loader for pacbio data
+
 release 43.2.0
  - samplesheet generation for MiSeq instruments (both a script and a class)
    is moved to this package from npg_tracking, the class is renamed
