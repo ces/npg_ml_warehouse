@@ -4,32 +4,46 @@ use Moose::Role;
 use WTSI::NPG::HTS::PacBio::Sequel::APIClient;
 use WTSI::DNAP::Warehouse::Schema;
 
-our $VERSION = '';
+our $VERSION = '0';
 
-has 'dry_run' => 
+=head1 NAME
+
+npg_warehouse::loader::pacbio::base
+
+=head1 SYNOPSIS
+
+=head1 DESCRIPTION
+
+Base class for pacbio data loading.
+
+=head1 SUBROUTINES/METHODS
+
+=cut
+
+has 'dry_run' =>
   (isa           => 'Bool',
    is            => 'ro',
    required      => 1,
    default       => 0,
-   documentation => 'dry run mode flag, false by default');
+   documentation => 'dry run mode flag, false by default',);
 
 has 'pb_api_client' =>
   (isa           => 'WTSI::NPG::HTS::PacBio::Sequel::APIClient',
    is            => 'ro',
    required      => 1,
-   documentation => 'A PacBio Sequel API client');
+   documentation => 'A PacBio Sequel API client',);
 
 has 'mlwh_schema' =>
   (is            => 'ro',
    isa           => 'WTSI::DNAP::Warehouse::Schema',
    required      => 1,
-   documentation => 'A ML warehouse handle');
+   documentation => 'A ML warehouse handle',);
 
 
 =head2 fix_date
 
-  Arg [1]    : 
-  Example    : 
+  Arg [1]    : SMRT Link date string.
+  Example    : my($fixed_date) = $self->fix_date($date) 
   Description: Convert SMRT Link date to datetime
   Returntype : String
 
@@ -40,10 +54,10 @@ sub fix_date {
 
   my $fixed;
   if (defined $date) {
-    if($date =~ /^(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})/) {
+    if($date =~ /^(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})/smx) {
       $fixed = $1 .q[ ]. $2;
     } else {
-      $self->error(qq[Failed to fix date $date, for loading]); 
+      $self->error(qq[Failed to fix date $date, for loading]);
     }
   }
   return $fixed;
@@ -55,16 +69,29 @@ no Moose::Role;
 
 __END__
 
+=head1 DIAGNOSTICS
 
-=head1 NAME
+=head1 CONFIGURATION AND ENVIRONMENT
 
-npg_warehouse::loader::pacbio::base
+=head1 DEPENDENCIES
 
-=head1 DESCRIPTION
+=over
+
+=item Moose::Role
+
+=item WTSI::NPG::HTS::PacBio::Sequel::APIClient
+
+=item WTSI::DNAP::Warehouse::Schema
+
+=back
+
+=head1 INCOMPATIBILITIES
+
+=head1 BUGS AND LIMITATIONS
 
 =head1 AUTHOR
 
-=head1 COPYRIGHT AND DISCLAIMER
+=head1 LICENSE AND COPYRIGHT
 
 Copyright (C) 2021 Genome Research Limited. All Rights Reserved.
 

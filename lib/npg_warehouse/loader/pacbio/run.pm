@@ -14,23 +14,38 @@ with qw[npg_warehouse::loader::pacbio::base
         WTSI::DNAP::Utilities::Loggable
        ];
 
-our $VERSION = '';
+our $VERSION = '0';
 
 Readonly::Scalar my $RUN_WELL_TABLE_NAME => q[PacBioRunWellMetric];
 Readonly::Scalar my $PRODUCT_TABLE_NAME  => q[PacBioProductMetric];
+
+
+=head1 NAME
+
+npg_warehouse::loader::pacbio::run
+
+=head1 SYNOPSIS
+
+ npg_warehouse::loader::pacbio::run->new(@args)->load_run;
+
+=head1 DESCRIPTION
+
+=head1 SUBROUTINES/METHODS
+
+=cut 
 
 has 'run_uuid' =>
   (isa           => 'Str',
    is            => 'ro',
    required      => 1,
-   documentation => 'The PacBio run unique identifier');
+   documentation => 'The PacBio run unique identifier',);
 
 has '_run_name' =>
   (isa           => 'Str',
    is            => 'ro',
    lazy          => 1,
    builder       => q[_build_run_name],
-   documentation => 'The shared Pacbio and SequenceScape/TRACTION run name');
+   documentation => 'The shared Pacbio and SequenceScape/TRACTION run name',);
 
 sub _build_run_name {
   my $self = shift;
@@ -44,7 +59,7 @@ has '_run_data' =>
    is            => 'ro',
    lazy          => 1,
    builder       => '_build_run_data',
-   documentation => 'Run, well and product data for a run');
+   documentation => 'Run, well and product data for a run',);
 
 sub _build_run_data {
   my $self  = shift;
@@ -53,7 +68,7 @@ sub _build_run_data {
   my $product_data = $self->product_data($well_data);
 
   return { $RUN_WELL_TABLE_NAME  => $well_data,
-           $PRODUCT_TABLE_NAME   => $product_data, 
+           $PRODUCT_TABLE_NAME   => $product_data,
           };
 }
 
@@ -62,7 +77,7 @@ has '_run' =>
    is            => 'ro',
    lazy          => 1,
    builder       => '_build_run',
-   documentation => 'Fetch data for a run via the API');
+   documentation => 'Fetch data for a run via the API',);
 
 sub _build_run {
   my $self  = shift;
@@ -91,7 +106,7 @@ has '_run_wells' =>
    is            => 'ro',
    lazy          => 1,
    builder       => '_build_run_wells',
-   documentation => 'Fetch well data for a run via the API');
+   documentation => 'Fetch well data for a run via the API',);
 
 sub _build_run_wells {
   my $self  = shift;
@@ -110,14 +125,14 @@ sub _build_run_wells {
       $well_info{'ccs_execution_mode'} = $well->{'ccsExecutionMode'};
 
       my $qc = defined $well->{'ccsExecutionMode'} &&
-        $well->{'ccsExecutionMode'} eq 'OnInstrument' ? 
+        $well->{'ccsExecutionMode'} eq 'OnInstrument' ?
         $self->_well_qc_info($well->{'ccsId'}, q[ccsreads]) :
         $self->_well_qc_info($well->{'uniqueId'}, q[subreads]);
 
       my $run = $self->_run;
-      my %all = (%{$run}, %well_info, %{$qc}); 
+      my %all = (%{$run}, %well_info, %{$qc});
       push @run_wells, \%all;
-    } 
+    }
   }
   return \@run_wells;
 }
@@ -256,15 +271,45 @@ no Moose;
 
 __END__
 
-=head1 NAME
+=head1 DIAGNOSTICS
 
-npg_warehouse::loader::pacbio::run
+=head1 CONFIGURATION AND ENVIRONMENT
 
-=head1 DESCRIPTION
+=head1 DEPENDENCIES
+
+=over
+
+=item namespace::autoclean
+
+=item English
+
+=item JSON
+
+=item Moose
+
+=item MooseX::StrictConstructor
+
+=item Perl6::Slurp
+
+=item Readonly
+
+=item Try::Tiny
+
+=item npg_warehouse::loader::pacbio::base
+
+=item npg_warehouse::loader::pacbio::product
+
+=item WTSI::DNAP::Utilities::Loggable
+
+=back
+
+=head1 INCOMPATIBILITIES
+
+=head1 BUGS AND LIMITATIONS
 
 =head1 AUTHOR
 
-=head1 COPYRIGHT AND DISCLAIMER
+=head1 LICENSE AND COPYRIGHT
 
 Copyright (C) 2021 Genome Research Limited. All Rights Reserved.
 

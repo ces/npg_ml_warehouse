@@ -79,9 +79,9 @@ subtest 'load_completed_run_off_instrument_analysis' => sub {
   cmp_ok($errors, '==', 0, "Dry run - Loaded 0 runs with no errors");
 
   my @load_args2 = (dry_run       => '0',
-                   pb_api_client => $pb_api,
-                   mlwh_schema   => $wh_schema,
-                   run_uuid      => q[288f2be0-9c7c-4930-b1ff-0ad71edae556]);
+                    pb_api_client => $pb_api,
+                    mlwh_schema   => $wh_schema,
+                    run_uuid      => q[288f2be0-9c7c-4930-b1ff-0ad71edae556]);
 
   my $loader2   = npg_warehouse::loader::pacbio::run->new(@load_args2);
   my ($processed2, $loaded2, $errors2) = $loader2->load_run;
