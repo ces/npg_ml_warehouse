@@ -4,7 +4,7 @@ bin/npg_mlwarehouse_fkrepair
 bin/npg_mlwarehouse_run_delete
 bin/npg_pacbio_runs2mlwarehouse
 bin/npg_products2mlwarehouse
-bin/npg_run_statuses2mlwarehouse
+bin/npg_run_info2mlwarehouse
 bin/npg_runs2mlwarehouse
 bin/npg_samplesheet4MiSeq
 bin/warehouse_loader_launcher
@@ -21,7 +21,7 @@ lib/npg_warehouse/loader/product.pm
 lib/npg_warehouse/loader/product_limited.pm
 lib/npg_warehouse/loader/qc.pm
 lib/npg_warehouse/loader/run.pm
-lib/npg_warehouse/loader/run_status.pm
+lib/npg_warehouse/loader/run_info.pm
 lib/npg_warehouse/loader/pacbio/base.pm
 lib/npg_warehouse/loader/pacbio/product.pm
 lib/npg_warehouse/loader/pacbio/run.pm
@@ -44,7 +44,7 @@ t/10-npg_warehouse-loader-pacbio-run.t
 t/10-npg_warehouse-loader-product_limited.t
 t/10-npg_warehouse-loader-qc.t
 t/10-npg_warehouse-loader-run.t
-t/10-npg_warehouse-loader-run_status.t
+t/10-npg_warehouse-loader-run_info.t
 t/10-st-api-lims-ml_warehouse.t
 t/20-npg_warehouse-loader-run.t
 t/30-npg_tracking-daemon-fkrepair.t
