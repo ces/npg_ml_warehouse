@@ -100,7 +100,6 @@ my $output = q{Considered }. scalar @runs_to_load .q{,}.
 
 ($num_errors == 0) ? $log->info($output) : $log->logcroak($output);
 
-
 =head1 NAME
 
 npg_pacbio_runs2mlwarehouse
@@ -155,6 +154,42 @@ npg_pacbio_runs2mlwarehouse [--api-uri <uri>] [--debug] [--help]
 =head1 REQUIRED ARGUMENTS
 
 None
+
+=head1 EXIT STATUS
+
+=head1 CONFIGURATION
+
+=head1 DIAGNOSTICS
+
+=head1 DEPENDENCIES
+
+=over
+
+=item strict
+
+=item warnings
+
+=item lib
+
+=item FindBin
+
+=item Getopt::Long
+
+=item Log::Log4perl
+
+=item Pod::Usage
+
+=item Readonly
+
+=item npg_warehouse::loader::pacbio::run
+
+=item WTSI::DNAP::Warehouse::Schema
+
+=item WTSI::NPG::HTS::PacBio::Sequel::APIClient
+
+=head1 INCOMPATIBILITIES
+
+=head1 BUGS AND LIMITATIONS
 
 =head1 AUTHOR
 
