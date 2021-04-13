@@ -32,7 +32,7 @@ GetOptions('api-uri|api_uri=s'          => \$api_uri,
            'debug'                      => \$debug,
            'dry-run|dry_run!'           => \$dry_run,
            'help'                       => sub {
-             pod2usage(-verbose => 2, -exitval => 0,);
+             pod2usage(-verbose => 1, -exitval => 0,);
            },
            'interval=i'                 => \$interval,
            'logconf=s'                  => \$log4perl_config,
@@ -100,6 +100,12 @@ my $output = q{Considered }. scalar @runs_to_load .q{,}.
 
 ($num_errors == 0) ? $log->info($output) : $log->logcroak($output);
 
+$log->info(q[Completed loading - exiting]);
+
+exit 0;
+
+__END__
+
 =head1 NAME
 
 npg_pacbio_runs2mlwarehouse
@@ -157,6 +163,8 @@ None
 
 =head1 EXIT STATUS
 
+0
+
 =head1 CONFIGURATION
 
 =head1 DIAGNOSTICS
@@ -186,6 +194,8 @@ None
 =item WTSI::DNAP::Warehouse::Schema
 
 =item WTSI::NPG::HTS::PacBio::Sequel::APIClient
+
+=back
 
 =head1 INCOMPATIBILITIES
 
